@@ -1,0 +1,12 @@
+{
+  "name": "SIGAP - Sistem Informasi Gerakan Bahasa Isyarat Pelayanan",
+  "short_name": "SIGAP",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0b4f8a",
+  "description": "Panduan bahasa isyarat dan informasi pelayanan paspor di Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat.",
+  "icons": [
+    {"src":"assets/logo-sigap.jpg","sizes":"512x512","type":"image/jpeg","purpose":"any maskable"}
+  ]
+}

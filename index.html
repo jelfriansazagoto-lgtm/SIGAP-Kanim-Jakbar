@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b4f8a">
+<link rel="manifest" href="manifest.json">
+
+<title>SIGAP</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:
+    linear-gradient(rgba(244,247,251,0.90),rgba(244,247,251,0.90)),
+    url("assets/latar.png") center center / cover fixed;
+  color:#17324d;
+}
+
+header{
+  background:#0b4f8a;
+  color:white;
+  padding:22px 18px;
+}
+
+.logo-sigap{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  margin-bottom:8px;
+}
+
+.sub{
+  font-size:13px;
+}
+
+main{
+  max-width:700px;
+  margin:auto;
+  padding:16px;
+}
+
+.hero,.item,.card{
+  background:white;
+  border:1px solid #dbe5ef;
+  border-radius:16px;
+  padding:16px;
+  margin:10px 0;
+  box-shadow:0 3px 12px #0000000d;
+}
+
+h1{
+  margin:0 0 8px;
+}
+
+h2{
+  margin-top:8px;
+}
+
+.hero p,.item p{
+  line-height:1.5;
+  color:#52677b;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.card{
+  cursor:pointer;
+}
+
+.icon{
+  font-size:28px;
+}
+
+.card b{
+  display:block;
+  margin-top:8px;
+}
+
+.card span{
+  font-size:12px;
+  color:#64748b;
+}
+
+input{
+  width:100%;
+  box-sizing:border-box;
+  padding:13px;
+  border:1px solid #dbe5ef;
+  border-radius:12px;
+  font-size:15px;
+  margin:12px 0;
+}
+
+.page{
+  display:none;
+}
+
+.active{
+  display:block;
+}
+
+.back{
+  border:0;
+  background:none;
+  color:#0b4f8a;
+  font-weight:bold;
+  padding:5px 0 12px;
+  cursor:pointer;
+}
+
+.num{
+  background:#e8f2fb;
+  color:#0b4f8a;
+  border-radius:50%;
+  padding:6px 9px;
+  margin-right:7px;
+}
+
+.btn{
+  display:inline-block;
+  background:#0b4f8a;
+  color:#fff;
+  text-decoration:none;
+  padding:11px 14px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:20px;
+  background:#eef2f7;
+  font-size:11px;
+}
+
+.ok{
+  background:#e8f6ee;
+  color:#18794e;
+}
+
+.note{
+  background:#fff7df;
+  padding:13px;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+.media{
+  margin-top:15px;
+}
+
+.media img,
+.media video{
+  width:100%;
+  max-width:500px;
+  border-radius:12px;
+  display:block;
+  margin:auto;
+}
+
+footer{
+  text-align:center;
+  color:#64748b;
+  font-size:12px;
+  padding:25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="assets/logo-sigap.png" class="logo-sigap" alt="Logo SIGAP">
+
+  <div class="brand">SIGAP</div>
+
+  <div class="sub">
+    Sistem Informasi Gerakan Bahasa Isyarat Pelayanan
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+  <div class="hero">
+    <h1>Selamat Datang di SIGAP</h1>
+    <p>
+      Panduan pelayanan paspor, persyaratan, dan kosakata
+      bahasa isyarat untuk mendukung komunikasi pelayanan.
+    </p>
+  </div>
+
+  <input
+    id="search"
+    placeholder="Cari kosakata, misalnya: jadwal"
+  >
+
+  <h2>Menu Utama</h2>
+
+  <div class="grid">
+
+    <div class="card" onclick="show('alur')">
+      <div class="icon">🛂</div>
+      <b>Alur Paspor</b>
+      <span>5 tahapan pelayanan</span>
+    </div>
+
+    <div class="card" onclick="show('syarat')">
+      <div class="icon">📄</div>
+      <b>Persyaratan</b>
+      <span>Dokumen paspor</span>
+    </div>
+
+    <div class="card" onclick="show('kamus')">
+      <div class="icon">🤟</div>
+      <b>Kamus Isyarat</b>
+      <span>Kosakata pelayanan</span>
+    </div>
+
+    <div class="card" onclick="show('tentang')">
+      <div class="icon">ℹ️</div>
+      <b>Tentang SIGAP</b>
+      <span>Tujuan dan referensi</span>
+    </div>
+
+  </div>
+
+  <div class="item">
+    <h3>📖 Kamus SIBI Resmi</h3>
+    <p>
+      Untuk bentuk isyarat resmi, gunakan Kamus SIBI langsung.
+    </p>
+
+    <a
+      class="btn"
+      href="https://pkplk.kemendikdasmen.go.id/sibi/"
+      target="_blank"
+    >
+      Buka Kamus SIBI
+    </a>
+  </div>
+
+</section>
+
+
+<!-- ALUR -->
+<section id="alur" class="page">
+
+  <button class="back" onclick="show('home')">
+    ← Kembali
+  </button>
+
+  <h2>Alur Pelayanan Paspor</h2>
+
+  <div class="item">
+    <h3>
+      <span class="num">01</span>
+      Pendaftaran M-Paspor
+    </h3>
+    <p>
+      Pemohon melakukan pendaftaran melalui aplikasi M-Paspor.
+    </p>
+  </div>
+
+  <div class="item">
+    <h3>
+      <span class="num">02</span>
+      Pengisian Data, Jadwal & Pembayaran
+    </h3>
+    <p>
+      Mengisi data, memilih lokasi/tanggal kedatangan,
+      dan melakukan pembayaran.
+    </p>
+  </div>
+
+  <div class="item">
+    <h3>
+      <span class="num">03</span>
+      Kedatangan ke Kantor Imigrasi
+    </h3>
+    <p>
+      Datang sesuai lokasi dan tanggal dengan membawa
+      persyaratan asli.
+    </p>
+  </div>
+
+  <div class="item">
+    <h3>
+      <span class="num">04</span>
+      Pemeriksaan, Wawancara & Biometrik
+    </h3>
+    <p>
+      Petugas memeriksa dokumen, melakukan wawancara
+      dan mengambil data biometrik.
+    </p>
+  </div>
+
+  <div class="item">
+    <h3>
+      <span class="num">05</span>
+      Tanda Terima Permohonan
+    </h3>
+    <p>
+      Jika persyaratan lengkap, petugas memberikan
+      tanda terima permohonan.
+    </p>
+  </div>
+
+  <div class="note">
+    <b>Catatan:</b>
+    Jika persyaratan belum lengkap, dokumen dapat dikembalikan
+    dan permohonan dianggap batal.
+  </div>
+
+  <div class="item">
+    <a
+      class="btn"
+      href="https://jakartabarat.imigrasi.go.id/paspor-baru/"
+      target="_blank"
+    >
+      Buka sumber resmi Kanim Jakbar
+    </a>
+  </div>
+
+</section>
+
+
+<!-- PERSYARATAN -->
+<section id="syarat" class="page">
+
+  <button class="back" onclick="show('home')">
+    ← Kembali
+  </button>
+
+  <h2>Persyaratan Paspor Baru</h2>
+
+  <div class="item">
+    <h3>E-KTP</h3>
+    <p>Bawa dokumen asli dan salinannya.</p>
+  </div>
+
+  <div class="item">
+    <h3>Kartu Keluarga</h3>
+    <p>Bawa dokumen asli dan salinannya.</p>
+  </div>
+
+  <div class="item">
+    <h3>
+      Akta Kelahiran / Ijazah /
+      Buku Nikah / Surat Baptis
+    </h3>
+    <p>
+      Sesuai ketentuan yang berlaku.
+    </p>
+  </div>
+
+  <div class="note">
+    Petugas dapat meminta dokumen tambahan apabila diperlukan.
+  </div>
+
+  <div class="item">
+    <a
+      class="btn"
+      href="https://jakartabarat.imigrasi.go.id/paspor-baru/"
+      target="_blank"
+    >
+      Lihat persyaratan resmi
+    </a>
+  </div>
+
+</section>
+
+
+<!-- KAMUS -->
+<section id="kamus" class="page">
+
+  <button class="back" onclick="show('home')">
+    ← Kembali
+  </button>
+
+  <h2>Kamus Bahasa Isyarat</h2>
+
+  <p style="color:#64748b">
+    Kosakata dipilih untuk kebutuhan pelayanan.
+    Status perlu validasi berarti belum boleh dianggap
+    sebagai isyarat SIBI resmi.
+  </p>
+
+  <div id="words"></div>
+
+  <div class="item">
+    <a
+      class="btn"
+      href="https://pkplk.kemendikdasmen.go.id/sibi/pencarian/"
+      target="_blank"
+    >
+      Cari langsung di Kamus SIBI
+    </a>
+  </div>
+
+</section>
+
+
+<!-- DETAIL -->
+<section id="detail" class="page">
+
+  <button class="back" onclick="show('kamus')">
+    ← Kembali ke Kamus
+  </button>
+
+  <div class="hero">
+
+    <h1 id="dt"></h1>
+
+    <p id="dd"></p>
+
+    <span id="db" class="badge"></span>
+
+    <div class="media">
+
+      <img
+        id="detailImage"
+        alt="Gambar kosakata"
+        style="display:none;"
+      >
+
+      <video
+        id="detailVideo"
+        controls
+        style="display:none;"
+      ></video>
+
+    </div>
+
+    <p id="ds"></p>
+
+  </div>
+
+</section>
+
+
+<!-- TENTANG -->
+<section id="tentang" class="page">
+
+  <button class="back" onclick="show('home')">
+    ← Kembali
+  </button>
+
+  <h2>Tentang SIGAP</h2>
+
+  <div class="item">
+    <h3>Tujuan</h3>
+
+    <p>
+      Menyediakan media digital sederhana untuk membantu
+      memahami pelayanan paspor dan kosakata bahasa isyarat
+      yang relevan.
+    </p>
+  </div>
+
+  <div class="item">
+    <h3>Referensi</h3>
+
+    <p>
+      Alur dan persyaratan mengacu pada informasi resmi
+      Kanim Jakarta Barat. Kosakata diarahkan ke Kamus SIBI resmi.
+    </p>
+  </div>
+
+</section>
+
+
+<footer>
+  SIGAP • Prototype Inovasi Pelayanan<br>
+  Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat
+</footer>
+
+</main>
+
+
+<!-- DATA SIGAP -->
+<script src="data.js"></script>
+
+<script>
+
+const words = window.SIGAP_WORDS || [];
+
+function render(q=''){
+
+  let e = document.getElementById('words');
+
+  e.innerHTML = '';
+
+  words
+    .filter(x =>
+      x.word.toLowerCase().includes(q.toLowerCase())
+    )
+    .forEach(x => {
+
+      let d = document.createElement('div');
+
+      d.className = 'card';
+
+      d.innerHTML =
+        '<div class="icon">🤟</div>' +
+        '<b>' + x.word + '</b>' +
+        '<span>' + x.description + '</span><br>' +
+        '<span class="badge ' +
+        (x.status.startsWith('Referensi') ? 'ok' : '') +
+        '">' +
+        x.status +
+        '</span>';
+
+      d.onclick = () => {
+
+        document.getElementById('dt').textContent =
+          x.word;
+
+        document.getElementById('dd').textContent =
+          x.description;
+
+        document.getElementById('db').textContent =
+          x.status;
+
+        document.getElementById('ds').textContent =
+          x.source || '';
+
+        const image =
+          document.getElementById('detailImage');
+
+        const video =
+          document.getElementById('detailVideo');
+
+        image.style.display = 'none';
+        video.style.display = 'none';
+
+        image.removeAttribute('src');
+        video.removeAttribute('src');
+
+        if(x.image){
+
+          image.src = x.image;
+          image.style.display = 'block';
+
+        }
+
+        if(x.video){
+
+          video.src = x.video;
+          video.style.display = 'block';
+
+        }
+
+        show('detail');
+
+      };
+
+      e.appendChild(d);
+
+    });
+
+}
+
+
+function show(id){
+
+  document
+    .querySelectorAll('.page')
+    .forEach(x =>
+      x.classList.remove('active')
+    );
+
+  document
+    .getElementById(id)
+    .classList.add('active');
+
+  scrollTo(0,0);
+
+}
+
+
+document
+  .getElementById('search')
+  .oninput = e => {
+
+    show('kamus');
+
+    render(e.target.value);
+
+  };
+
+
+render();
+
+</script>
+
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("service-worker.js"));}</script>
+</body>
+</html>
